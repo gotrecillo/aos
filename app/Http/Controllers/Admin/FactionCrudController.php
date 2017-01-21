@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\FactionRequest as StoreRequest;
+use App\Http\Requests\FactionRequest as UpdateRequest;
+use App\Models\Faction;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\FactionRequest as StoreRequest;
-use App\Http\Requests\FactionRequest as UpdateRequest;
 
 class FactionCrudController extends CrudController
 {
@@ -19,7 +20,7 @@ class FactionCrudController extends CrudController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-        $this->crud->setModel("App\Models\Faction");
+        $this->crud->setModel(Faction::class);
         $this->crud->setRoute("admin/faction");
         $this->crud->setEntityNameStrings('faction', 'factions');
 
@@ -30,6 +31,12 @@ class FactionCrudController extends CrudController
 		*/
 
         $this->crud->setFromDb();
+
+        $this->crud->addField([
+            'label' => 'Faction Image',
+            'name' => 'image',
+            'type' => 'browse',
+        ]);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
@@ -75,7 +82,7 @@ class FactionCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
@@ -96,21 +103,21 @@ class FactionCrudController extends CrudController
         // $this->crud->limit();
     }
 
-	public function store(StoreRequest $request)
-	{
-		// your additional operations before save here
+    public function store(StoreRequest $request)
+    {
+        // your additional operations before save here
         $redirect_location = parent::storeCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-	}
+    }
 
-	public function update(UpdateRequest $request)
-	{
-		// your additional operations before save here
+    public function update(UpdateRequest $request)
+    {
+        // your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-	}
+    }
 }

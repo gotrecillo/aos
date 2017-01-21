@@ -73,6 +73,6 @@ return [
     */
 
     // Fully qualified namespace of the User model
-    'user_model_fqn' => '\App\User',
+    'user_model_fqn' => '\App\Models\User',
 
 ];

@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;CAChB","file":"app.css","sourcesContent":[".dataTables_wrapper {\n  max-width: 99%;\n}"]}

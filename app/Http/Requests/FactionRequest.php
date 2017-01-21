@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class FactionRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
 {
     /**
@@ -25,7 +23,8 @@ class FactionRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+             'name' => 'required|max:255',
+             'image' => 'required|max:255',
         ];
     }
 
