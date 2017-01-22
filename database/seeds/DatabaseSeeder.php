@@ -11,6 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        }
+
         $this->call(UserTableSeeder::class);
+        $this->call(FactionTableSeeder::class);
+        $this->call(ArmyTableSeeder::class);
+        $this->call(WarscrollTableSeeder::class);
+
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
     }
 }

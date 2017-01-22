@@ -1,1 +1,1 @@
-{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;CAChB","file":"app.css","sourcesContent":[".dataTables_wrapper {\n  max-width: 99%;\n}"]}
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;CAChB;;AAED;EACE,2BAAY;CACb","file":"app.css","sourcesContent":[".dataTables_wrapper {\n  max-width: 99%;\n}\n\n.carrousel {\n  height: calc(100vh - 64px);\n}"]}
