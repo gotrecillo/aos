@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\CrudTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\Base\app\Notifications\ResetPasswordNotification;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * App\Models\User
@@ -28,6 +30,8 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification;
  */
 class User extends Authenticatable
 {
+    use CrudTrait;
+    use HasRoles;
     use Notifiable;
 
     /**

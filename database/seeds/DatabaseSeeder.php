@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(UserTableSeeder::class);
+        $this->call(PageTableSeeder::class);
         $this->call(FactionTableSeeder::class);
         $this->call(ArmyTableSeeder::class);
         $this->call(WarscrollTableSeeder::class);

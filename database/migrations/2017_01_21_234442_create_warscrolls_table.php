@@ -22,10 +22,7 @@ class CreateWarscrollsTable extends Migration
             $table->integer('min_size')->nullable()->unsigned();
             $table->integer('max_size')->nullable()->unsigned();
             $table->integer('points')->nullable()->unsigned();
-            $table->text('description')->nullable();
-            $table->text('options')->nullable();
-            $table->text('abilities')->nullable();
-            $table->text('command_abilities')->nullable();
+            $table->string('pdf')->nullable();
             $table->string('notes')->nullable();
 
             $table->timestamps();

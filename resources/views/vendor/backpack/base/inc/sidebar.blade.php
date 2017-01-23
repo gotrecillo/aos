@@ -33,8 +33,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url(config('backpack.base.route_prefix', 'admin').'/unity') }}">
-                        <i class="fa fa-font-awesome"></i> <span>Unities</span>
+                    <a href="{{ url(config('backpack.base.route_prefix', 'admin').'/battlefield-role') }}">
+                        <i class="fa fa-font-awesome"></i> <span>Battlefield Roles</span>
                     </a>
                 </li>
                 <li class="header">{{ trans('backpack::base.administration') }}</li>
@@ -45,6 +45,14 @@
                     <a href="{{ url(config('backpack.base.route_prefix', 'admin').'/dashboard') }}">
                         <i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span>
                     </a>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-group"></i> <span>Users, Roles, Permissions</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ url('admin/user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+                        <li><a href="{{ url('admin/role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
+                        <li><a href="{{ url('admin/permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/elfinder') }}">

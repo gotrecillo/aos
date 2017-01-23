@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\WarscrollRequest as StoreRequest;
-use App\Http\Requests\WarscrollRequest as UpdateRequest;
-use App\Models\Army;
 use App\Models\BattlefieldRole;
-use App\Models\Warscroll;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
+use App\Http\Requests\BattlefieldRoleRequest as StoreRequest;
+use App\Http\Requests\BattlefieldRoleRequest as UpdateRequest;
 
-class WarscrollCrudController extends CrudController
+class BattlefieldRoleCrudController extends CrudController
 {
 
     public function setUp()
@@ -22,106 +20,29 @@ class WarscrollCrudController extends CrudController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-        $this->crud->setModel(Warscroll::class);
-        $this->crud->setRoute('admin/warscroll');
-        $this->crud->setEntityNameStrings('warscroll', 'warscrolls');
+        $this->crud->setModel(BattlefieldRole::class);
+        $this->crud->setRoute("admin/battlefield-role");
+        $this->crud->setEntityNameStrings('battlefield role', 'battlefield roles');
 
         /*
 		|--------------------------------------------------------------------------
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
+
         $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
-        $this->crud->addField([
-            'label'     => 'Army',
-            'type'      => 'select2',
-            'name'      => 'army_id',
-            'entity'    => 'army',
-            'attribute' => 'name',
-            'model'     => Army::class,
-        ]);
-
-        $this->crud->addField([
-            'label'     => 'Battlefield Roles',
-            'type'      => 'select2_multiple',
-            'name'      => 'battlefieldRoles',
-            'entity'    => 'battlefieldRoles',
-            'attribute' => 'name',
-            'model'     => BattlefieldRole::class,
-            'pivot'     => true,
-        ])->afterField('army_id');
-
-        $this->crud->addField([
-            'name'  => 'points',
-            'label' => 'Points',
-            'type'  => 'number',
-        ]);
-
-        $this->crud->addField([
-            'name'  => 'min_size',
-            'label' => 'Minimum size',
-            'type'  => 'number',
-        ]);
-
-        $this->crud->addField([
-            'name'  => 'max_size',
-            'label' => 'Maximum size',
-            'type'  => 'number',
-        ]);
-
-        $this->crud->addField([
-            'name'  => 'pdf',
-            'label' => 'PDF',
-            'type'  => 'browse',
-        ]);
+        // $this->crud->addField($options, 'update/create/both');
+        // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        // $this->crud->removeField('name', 'update/create/both');
+        // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
-        $this->crud->removeColumns([
-            'pdf',
-            'army_id',
-            'min_size',
-            'max_size',
-            'notes',
-        ]);
-
-        $this->crud->addColumn([
-            'label'     => 'Army',
-            'type'      => 'select',
-            'name'      => 'army_id',
-            'entity'    => 'army',
-            'attribute' => 'name',
-            'model'     => Army::class,
-        ])->afterColumn('name');
-
-        $this->crud->addColumn([
-            'label' => 'Min Size',
-            'type'  => 'text',
-            'name'  => 'min_size',
-        ])->afterColumn('army_id');
-
-        $this->crud->addColumn([
-            'label' => 'Max Size',
-            'type'  => 'text',
-            'name'  => 'max_size',
-        ])->afterColumn('min_size');
-
-        $this->crud->addColumn([
-            'label'     => 'Battlefield Roles',
-            'type'      => 'select_multiple',
-            'name'      => 'battlefieldRoles',
-            'entity'    => 'battlefieldRoles',
-            'attribute' => 'name',
-            'model'     => BattlefieldRole::class,
-            'pivot'     => true,
-        ])->afterColumn('army_id');
-
-        $this->crud->enableDetailsRow();
-
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        //$this->crud->removeColumn('column_name'); // remove a column from the stack
+        // $this->crud->removeColumn('column_name'); // remove a column from the stack
+        // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
@@ -176,29 +97,21 @@ class WarscrollCrudController extends CrudController
         // $this->crud->limit();
     }
 
-    public function showDetailsRow($id)
-    {
-        $warscroll = Warscroll::find($id);
-
-
-        return $warscroll->pdf ? '<iframe src="/' . $warscroll->pdf . '" width="100%" height="600px"></iframe>' : '';
-    }
-
-    public function store(StoreRequest $request)
-    {
-        // your additional operations before save here
+	public function store(StoreRequest $request)
+	{
+		// your additional operations before save here
         $redirect_location = parent::storeCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-    }
+	}
 
-    public function update(UpdateRequest $request)
-    {
-        // your additional operations before save here
+	public function update(UpdateRequest $request)
+	{
+		// your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-    }
+	}
 }

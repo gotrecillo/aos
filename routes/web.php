@@ -15,8 +15,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function () {
-    CRUD::resource('unity', 'UnityCrudController');
+    CRUD::resource('battlefield-role', 'BattlefieldRoleCrudController');
 });
+
 
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
     ->name('page')

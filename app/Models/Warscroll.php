@@ -51,7 +51,7 @@ class Warscroll extends Model
     // protected $table = 'warscrolls';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'battlefieldRoles'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -70,6 +70,11 @@ class Warscroll extends Model
     public function army()
     {
         return $this->belongsTo(Army::class);
+    }
+
+    public function battlefieldRoles()
+    {
+        return $this->belongsToMany(BattlefieldRole::class);
     }
     /*
 	|--------------------------------------------------------------------------

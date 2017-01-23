@@ -171,6 +171,7 @@ return [
         \Backpack\MenuCRUD\MenuCRUDServiceProvider::class,
         \Cviebrock\EloquentSluggable\ServiceProvider::class,
         \Backpack\PageManager\PageManagerServiceProvider::class,
+        \Backpack\PermissionManager\PermissionManagerServiceProvider::class,
         \Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
